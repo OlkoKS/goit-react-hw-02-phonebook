@@ -39,6 +39,15 @@ export class App extends Component {
     }));
   };
 
+  handleContacts = () => {
+    const { filter, contacts } = this.state;
+    return filter
+      ? contacts.filter(contact =>
+          contact.name.toLowerCase().includes(filter.toLowerCase())
+        )
+      : contacts;
+  };
+
   render() {
     return (
       <div className="phoneBookContainer">
@@ -47,8 +56,7 @@ export class App extends Component {
         <h2>Contacts</h2>
         <Filter handleFilter={this.handleFilter} />
         <ContactList
-          contacts={this.state.contacts}
-          filter={this.state.filter}
+          contacts={this.handleContacts()}
           handleDelete={this.handleDelete}
         />
       </div>

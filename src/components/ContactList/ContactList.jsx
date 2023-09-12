@@ -1,17 +1,12 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { ListContainer } from './ContactList.styled';
 
-export const ContactList = ({ contacts, filter, handleDelete }) => {
-  let contactList = filter
-    ? contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      )
-    : contacts;
+export const ContactList = ({ contacts, handleDelete }) => {
   return (
     <div>
       <h2>ContactList</h2>
       <ListContainer>
-        {contactList.map(contact => {
+        {contacts.map(contact => {
           const { id, name, number } = contact;
           return (
             <ContactItem
